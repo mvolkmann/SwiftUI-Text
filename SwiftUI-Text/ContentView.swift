@@ -1,7 +1,5 @@
 import SwiftUI
 
-// let markdown = "_Hamlet_ by **William Shakespeare**"
-
 extension AttributedString {
     // Style the range occupied by a given substring using a closure.
     mutating func style(
