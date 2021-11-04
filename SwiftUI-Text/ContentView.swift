@@ -3,20 +3,22 @@ import SwiftUI
 // let markdown = "_Hamlet_ by **William Shakespeare**"
 
 extension AttributedString {
+    // Style the range occupied by a given substring using a closure.
     mutating func style(
         text: String,
-        configure: (inout AttributedSubstring) -> Void
+        style: (inout AttributedSubstring) -> Void
     ) {
         if let range = self.range(of: text) {
-            configure(&self[range])
+            style(&self[range])
         }
     }
 }
 
 extension Text {
-    init(_ string: String, configure: (inout AttributedString) -> Void) {
+    // Creates a Text from a String and styles the entire value.
+    init(_ string: String, style: (inout AttributedString) -> Void) {
         var attributedString = AttributedString(string)
-        configure(&attributedString) // configure using the closure
+        style(&attributedString) // style using the closure
         self.init(attributedString) // create a `Text`
     }
 }
