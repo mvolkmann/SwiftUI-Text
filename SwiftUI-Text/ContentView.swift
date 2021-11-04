@@ -22,11 +22,6 @@ extension Text {
 }
 
 struct ContentView: View {
-    /*
-     let attributedString =
-         try! AttributedString(markdown: markdown)
-     */
-
     // Using extension to AttributedString
     var demo: AttributedString {
         var s = AttributedString("Red Green Blue")
