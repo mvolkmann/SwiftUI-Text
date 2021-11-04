@@ -22,17 +22,22 @@ extension Text {
 }
 
 struct ContentView: View {
+    @Environment(\.font) var font // default font
+    
     // Using extension to AttributedString
     var demo: AttributedString {
         var s = AttributedString("Red Green Blue")
         s.style(text: "Red") {
             $0.foregroundColor = .red
+            $0.font = .body.italic() // italic version of body font
         }
         s.style(text: "Green") {
             $0.foregroundColor = .green
         }
         s.style(text: "Blue") {
-            $0.foregroundColor = .blue
+            $0.foregroundColor = .purple
+            // Use the italic version of either the default or body font.
+            $0.font = (font ?? .body).italic()
         }
         return s
     }
